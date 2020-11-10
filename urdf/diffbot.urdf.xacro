@@ -21,6 +21,9 @@
   <xacro:property name="base_props" value="${load_yaml(base_yaml)}"/>
 
 
+  <!-- Footprint link -->
+  <xacro:footprint wheel_props="${front_wheel_props}" />
+
   <!-- Base link -->
   <xacro:base base_prop="${base_props}" mesh="${base_props['base']['mesh']}" >
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -59,6 +62,7 @@
   </xacro:motor>
        
 
-  <!-- <xacro:include filename="$(find mobile_description)/urdf/mobile_robot_gazebo_plugins.xacro"/>  -->
+  <!-- Sensors -->
+
 
 </robot>

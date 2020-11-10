@@ -338,7 +338,41 @@
       </geometry>
     </collision>
     </link>
-  </xacro:macro> 
+  </xacro:macro>
+
+<!-- ===================== Footprint xacro ==========================================
+
+  Xacro to create the base link. For more detail information and usage, see:
+    https://github.com/pxalcantara/mobile_robot_description/wiki/Base-xacro
+
+  params:
+  - base_props [dictionary]: base link properties;
+  - mesh [string]: file name of the link mesh;
+    - DEFAULT Value -> Empty string  
+  - origin [block]: origin, position and orientation of the link;
+-->
+  <xacro:macro name="footprint"
+               params="wheel_props">
+    <!-- Base-Footprint -->
+    <!-- base_footprint is a fictitious link(frame) that is on the ground right below base_link origin -->
+    <link name="base_footprint">
+      <collision>
+        <!-- origin xyz="0 0 ${-base_z_origin_to_wheel_origin}" rpy="0 0 0" /-->
+        <origin xyz="0 0 ${wheel_props['wheel']['z_offset']}" rpy="0 0 0" />
+        <geometry>
+          <box size="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Joint to connect base_footprint with base_link -->
+    <joint name="base_footprint_joint" type="fixed">
+      <!-- origin xyz="0 0 ${wheel_radius - base_z_origin_to_wheel_origin}" rpy="0 0 0" /-->
+      <origin xyz="0 0 ${wheel_props['wheel']['radius'] - wheel_props['wheel']['z_offset']}" rpy="0 0 0" />
+      <parent link="base_footprint"/>
+      <child link="base_link" />
+    </joint>
+  </xacro:macro>
 <!-- ======================================================================= -->
 
 <!-- ======================= Intertial macros ===============================-->
