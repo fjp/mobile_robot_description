@@ -24,7 +24,7 @@
   </xacro:base>
 
   <!-- Back Caster Wheel -->
-  <xacro:caster_wheel prefix="caster_wheel" reflect="-1"
+  <xacro:caster_wheel prefix="rear" reflect="-1"
                       wheel_props="${caster_wheel_props}">
   </xacro:caster_wheel>
 
