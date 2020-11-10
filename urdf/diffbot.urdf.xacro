@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobile_robot">
 
-  <xacro:property name="package_name" value="mobile_robot_description"/>
+  <xacro:property name="package_name" value="diffbot_description"/>
   <xacro:property name="robot_name" value="diffbot"/>
 
   <xacro:include filename="$(find ${package_name})/urdf/include/common_macros.urdf.xacro" />
-  
-  <!-- <xacro:set_package_name /> -->
+  <xacro:include filename="$(find ${package_name})/urdf/include/common_sensors.xacro" />
+  <xacro:include filename="$(find ${package_name})/urdf/quimera_robot.gazebo.xacro" />
 
   <xacro:property name="caster_wheel_yaml" value="$(find ${package_name})/config/${robot_name}/caster_wheel.yaml" />
   <xacro:property name="caster_wheel_props" value="${load_yaml(caster_wheel_yaml)}"/>
