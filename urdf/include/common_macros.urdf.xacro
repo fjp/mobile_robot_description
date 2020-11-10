@@ -167,7 +167,7 @@
       </collision>
     </link>
     <joint name="${prefix}_caster_rotation_joint" type="continuous">
-      <origin xyz="${wheel_props['hub']['dx']} ${-wheel_props['hub']['dy'] * locationright} ${wheel_props['hub']['dz']}" 
+      <origin xyz="${wheel_props['hub']['dx']} ${-wheel_props['hub']['dy'] * locationright} ${wheel_props['hub']['dz']}"
               rpy="0 0 0" />
       <parent link="base_link" />
       <child link="${prefix}_caster_rotation_link" />
@@ -182,8 +182,8 @@
     <!-- caster wheel -->
     <link name="${prefix}_caster_wheel_link">
       <xacro:cylinder_inertia m="${wheel_props['wheel']['mass']}"
-                            r="${wheel_props['wheel']['radius']}"
-                            l="${wheel_props['wheel']['length']}">
+                              r="${wheel_props['wheel']['radius']}"
+                              l="${wheel_props['wheel']['length']}">
         <!-- TODO unused block error?: origin xyz="0 0 0" rpy="${pi/2} 0 0" /-->
       </xacro:cylinder_inertia>
       <xacro:if value="${wheel_props['wheel']['mesh'] != '' }" >
